@@ -157,44 +157,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.28),transparent_50%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-5 py-14 md:flex-row md:items-end md:justify-between md:px-8 md:py-16">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
-              Ready when you are
-            </p>
-            <h2 className="mt-3 font-display text-3xl tracking-wide text-white md:text-4xl">
-              Schedule maintenance or repair
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/75 md:text-lg">
-              Call or email—we&apos;re at {site.address.street}, Novato. Open{" "}
-              {site.hours}.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button
-              render={<a href={site.phoneHref} />}
-              size="lg"
-              className="h-11 rounded-md bg-brand px-5 font-semibold text-brand-foreground hover:bg-brand/90"
-            >
-              Call {site.phone}
-            </Button>
-            <Button
-              render={<a href="/contact" />}
-              variant="outline"
-              size="lg"
-              className="h-11 rounded-md border-white/35 bg-white/5 px-5 font-semibold text-white hover:bg-white/15 hover:text-white"
-            >
-              Contact
-            </Button>
-          </div>
-        </div>
-      </section>
-
       <SiteFooter />
     </main>
   );

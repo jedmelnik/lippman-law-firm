@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
 function YouTubeIcon({ className }: { className?: string }) {
@@ -48,59 +49,97 @@ const socialLinks = [
   },
 ] as const;
 
+const navLinks = [
+  { label: "Services", href: "/services" },
+  { label: "Steve Speaks", href: "/steve-speaks" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+/** Combined contact CTA + site footer — one dark closing band sitewide. */
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-border/60 bg-[#f4f7fa]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between md:px-8">
-        <div className="space-y-2">
-          <p className="font-display text-xl tracking-wide text-ink">
-            <a href="/" className="transition-opacity hover:opacity-80">
-              {site.name}
-            </a>
-          </p>
-          <p className="max-w-md leading-relaxed">
-            {site.tagline}. {site.address.full}.
-          </p>
+    <footer className="relative mt-auto overflow-hidden bg-secondary text-secondary-foreground">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.28),transparent_50%)]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
+        {/* Contact CTA */}
+        <div className="flex flex-col gap-6 border-b border-white/10 py-14 md:flex-row md:items-end md:justify-between md:py-16">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
+              Contact
+            </p>
+            <p className="mt-3 font-display text-4xl tracking-wide text-white md:text-5xl">
+              Ready when you are
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-white/75 md:text-lg">
+              Appointments by phone or email at {site.address.street}, Novato.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button
+              render={<a href="/contact" />}
+              size="lg"
+              className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground hover:bg-brand/90"
+            >
+              Contact the shop
+            </Button>
+            <Button
+              render={<a href={site.phoneHref} />}
+              variant="outline"
+              size="lg"
+              className="h-12 rounded-md border-white/30 bg-transparent px-6 text-base font-semibold text-white hover:bg-white/10 hover:text-white"
+            >
+              Call {site.phone}
+            </Button>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-4 sm:items-end">
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="/services"
-              className="font-medium text-ink underline-offset-4 hover:underline"
-            >
-              Services
-            </a>
-            <a
-              href="/steve-speaks"
-              className="font-medium text-ink underline-offset-4 hover:underline"
-            >
-              Steve Speaks
-            </a>
-            <a
-              href="/contact"
-              className="font-medium text-ink underline-offset-4 hover:underline"
-            >
-              Contact
-            </a>
+        {/* Brand / nav / socials */}
+        <div className="flex flex-col gap-6 py-8 text-sm text-white/65 md:flex-row md:items-center md:justify-between md:py-10">
+          <div className="space-y-2">
+            <p className="font-display text-xl tracking-wide text-white">
+              <a href="/" className="transition-opacity hover:opacity-80">
+                {site.name}
+              </a>
+            </p>
+            <p className="max-w-md leading-relaxed">
+              {site.tagline}. {site.address.full}.
+            </p>
           </div>
-          <ul className="flex items-center gap-2">
-            {socialLinks.map(({ name, href, external, Icon }) => (
-              <li key={name}>
+
+          <div className="flex flex-col gap-4 sm:items-end">
+            <nav className="flex flex-wrap gap-4" aria-label="Footer">
+              {navLinks.map(({ label, href }) => (
                 <a
+                  key={href}
                   href={href}
-                  {...(external
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                  aria-label={name}
-                  title={name}
-                  className="inline-flex size-10 items-center justify-center rounded-md border border-border/80 bg-white/70 text-ink transition-colors hover:border-ink/30 hover:bg-ink hover:text-white"
+                  className="font-medium text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline"
                 >
-                  <Icon className="size-5" />
+                  {label}
                 </a>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </nav>
+            <ul className="flex items-center gap-2">
+              {socialLinks.map(({ name, href, external, Icon }) => (
+                <li key={name}>
+                  <a
+                    href={href}
+                    {...(external
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    aria-label={name}
+                    title={name}
+                    className="inline-flex size-10 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition-colors hover:border-white/40 hover:bg-white/15"
+                  >
+                    <Icon className="size-5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

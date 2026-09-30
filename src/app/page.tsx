@@ -205,44 +205,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact CTA → full details on /contact */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.28),transparent_50%)]"
-          aria-hidden
-        />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-8 md:py-20">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
-              Contact
-            </p>
-            <h2 className="mt-3 font-display text-4xl tracking-wide text-white md:text-5xl">
-              Ready when you are
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/75 md:text-lg">
-              Appointments by phone or email at {site.address.street}, Novato.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button
-              render={<a href="/contact" />}
-              size="lg"
-              className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground hover:bg-brand/90"
-            >
-              Contact the shop
-            </Button>
-            <Button
-              render={<a href={site.phoneHref} />}
-              variant="outline"
-              size="lg"
-              className="h-12 rounded-md border-white/30 bg-transparent px-6 text-base font-semibold text-white hover:bg-white/10 hover:text-white"
-            >
-              Call {site.phone}
-            </Button>
-          </div>
-        </div>
-      </section>
-
       <SiteFooter />
     </main>
   );
