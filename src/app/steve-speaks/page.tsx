@@ -21,7 +21,7 @@ export default async function SteveSpeaksPage() {
 
   return (
     <main className="flex flex-1 flex-col">
-      {/* Banner — Steve on the right; copy locked to the left fade */}
+      {/* Banner — natural shop framing; copy on left fade, Steve center-right */}
       <section className="relative isolate overflow-hidden bg-ink text-white">
         <div className="absolute inset-0">
           <Image
@@ -30,19 +30,19 @@ export default async function SteveSpeaksPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[78%_center] sm:object-[82%_center] lg:object-center"
+            className="object-cover object-[48%_42%] sm:object-[50%_40%] lg:object-center"
           />
-          {/* Extra left stage so copy never hits his face; section bg-ink extends ultra-wide */}
+          {/* Title stage on the left wall; clears before Steve (~center-right) */}
           <div
-            className="absolute inset-0 bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_46%,rgba(13,17,22,0.62)_60%,rgba(13,17,22,0.18)_74%,transparent_88%)] sm:bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_36%,rgba(13,17,22,0.5)_52%,rgba(13,17,22,0.12)_66%,transparent_80%)] lg:bg-[linear-gradient(90deg,#0d1116_0%,rgba(13,17,22,0.72)_22%,rgba(13,17,22,0.28)_38%,rgba(13,17,22,0.08)_50%,transparent_62%)]"
+            className="absolute inset-0 bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_34%,rgba(13,17,22,0.7)_48%,rgba(13,17,22,0.25)_60%,transparent_72%)] sm:bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_28%,rgba(13,17,22,0.62)_42%,rgba(13,17,22,0.2)_54%,transparent_66%)] lg:bg-[linear-gradient(90deg,#0d1116_0%,rgba(13,17,22,0.85)_20%,rgba(13,17,22,0.4)_36%,rgba(13,17,22,0.12)_48%,transparent_60%)]"
             aria-hidden
           />
         </div>
 
         <SiteHeader variant="overlay" />
 
-        <div className="relative z-10 mx-auto flex min-h-[17.5rem] max-w-6xl flex-col justify-end px-5 pb-8 pt-24 sm:min-h-[20rem] md:min-h-[22rem] md:px-8 md:pb-12 md:pt-28 lg:min-h-[26rem]">
-          <div className="max-w-[20rem] sm:max-w-md lg:max-w-lg">
+        <div className="relative z-10 mx-auto flex min-h-[20rem] max-w-6xl flex-col justify-end px-5 pb-8 pt-24 sm:min-h-[24rem] md:min-h-[28rem] md:px-8 md:pb-12 md:pt-28 lg:min-h-[32rem]">
+          <div className="max-w-[17rem] sm:max-w-sm md:max-w-md">
             <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-white/65 md:text-xs">
               From the shop floor
             </p>
