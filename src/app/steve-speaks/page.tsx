@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PageHero } from "@/components/page-hero";
 import { VideoGrid } from "@/components/video-grid";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
@@ -21,55 +21,34 @@ export default async function SteveSpeaksPage() {
 
   return (
     <main className="flex flex-1 flex-col">
-      {/* Banner — natural shop framing; copy on left fade, Steve center-right */}
-      <section className="relative isolate overflow-hidden bg-ink text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/steve-speaks-banner.jpg"
-            alt="Steve Lite using a torque wrench under a car at Steve's Auto Care"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[62%_46%] sm:object-[60%_44%] lg:object-[58%_42%]"
-          />
-          {/* Title stage only — real photo of Steve stays clear on the right */}
-          <div
-            className="absolute inset-0 bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_36%,rgba(13,17,22,0.68)_50%,rgba(13,17,22,0.22)_62%,transparent_74%)] sm:bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_30%,rgba(13,17,22,0.58)_44%,rgba(13,17,22,0.18)_56%,transparent_68%)] lg:bg-[linear-gradient(90deg,#0d1116_0%,rgba(13,17,22,0.82)_22%,rgba(13,17,22,0.38)_38%,rgba(13,17,22,0.1)_50%,transparent_62%)]"
-            aria-hidden
-          />
-        </div>
-
+      <div className="relative">
         <SiteHeader variant="overlay" />
-
-        <div className="relative z-10 mx-auto flex min-h-[20rem] max-w-6xl flex-col justify-end px-5 pb-8 pt-24 sm:min-h-[24rem] md:min-h-[28rem] md:px-8 md:pb-12 md:pt-28 lg:min-h-[32rem]">
-          <div className="max-w-[17rem] sm:max-w-sm md:max-w-md">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-white/65 md:text-xs">
-              From the shop floor
-            </p>
-            <h1 className="mt-2 font-display text-[clamp(2.75rem,10vw,5.5rem)] leading-[0.92] tracking-wide text-white">
-              Steve Speaks
-            </h1>
-            <div className="mt-3 h-[3px] w-20 bg-brand md:w-24" />
-            <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-white/80 md:mt-5 md:text-lg">
-              Short videos from {site.owner} on Honda, Acura, and Japanese
-              vehicle care—factory fluids, proper torque, warranties, and the
-              checklist we use every day.
-            </p>
-            <div className="mt-5">
-              <Button
-                render={
-                  <a href={site.youtubeUrl} target="_blank" rel="noreferrer" />
-                }
-                variant="outline"
-                size="lg"
-                className="h-11 rounded-md border-white/35 bg-white/5 px-5 font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
-              >
-                Open YouTube channel
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+        <PageHero
+          kicker="From the shop floor"
+          title="Steve Speaks"
+          lede={`Short videos from ${site.owner} on Honda, Acura, and Japanese vehicle care—factory fluids, proper torque, warranties, and the checklist we use every day.`}
+          ledeOnMobile
+          size="page"
+          image={{
+            src: "/images/steve-speaks-hero.jpg",
+            alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
+            // Head landmark in the open right half, opposite the left lockup
+            focal: "78% 48%",
+          }}
+          actions={
+            <Button
+              render={
+                <a href={site.youtubeUrl} target="_blank" rel="noreferrer" />
+              }
+              variant="outline"
+              size="lg"
+              className="h-11 rounded-md border-white/35 bg-white/5 px-5 font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+            >
+              Open YouTube channel
+            </Button>
+          }
+        />
+      </div>
 
       <section className="mx-auto w-full max-w-6xl flex-1 px-5 py-14 md:px-8 md:py-20">
         {videos.length > 0 ? (

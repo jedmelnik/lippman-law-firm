@@ -111,6 +111,18 @@
   }
 }
 
+/* Centered content column used by PageHero lockups and section wraps */
+.site-wrap {
+  width: min(72rem, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .site-wrap {
+    width: min(72rem, calc(100% - 4rem));
+  }
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
