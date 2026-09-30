@@ -16,7 +16,7 @@ const body = Figtree({
 export const metadata: Metadata = {
   title: "Steve's Auto Care | Honda & Acura Specialists in Novato",
   description:
-    "Factory-trained Honda and Acura specialists in Novato, CA. ASE Certified Master Technician Steve Lite — Marin's dealer alternative for Japanese vehicles. Call (415) 899-1115.",
+    "Factory-trained Honda and Acura specialists in Novato, CA. ASE Certified Master Technician Steve Lite - Marin's dealer alternative for Japanese vehicles. Call (415) 899-1115.",
   openGraph: {
     title: "Steve's Auto Care Novato",
     description:

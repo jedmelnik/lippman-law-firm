@@ -14,7 +14,7 @@ export const site = {
   },
   mapsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=879+Sweetser+Ave,+Novato,+CA+94945",
-  hours: "Monday–Friday, 8:00am–5:00pm",
+  hours: "Monday-Friday, 8:00am-5:00pm",
   yelpUrl: "https://www.yelp.com/biz/steves-auto-care-novato",
   yelpRating: "5.0",
   yelpReviews: "282",

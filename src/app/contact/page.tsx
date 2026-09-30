@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Steve's Auto Care Novato",
   description:
-    "Call, email, or visit Steve's Auto Care at 879 Sweetser Ave, Novato. Monday–Friday 8:00am–5:00pm. Honda and Acura specialists.",
+    "Call, email, or visit Steve's Auto Care at 879 Sweetser Ave, Novato. Monday-Friday 8:00am-5:00pm. Honda and Acura specialists.",
 };
 
 const details = [

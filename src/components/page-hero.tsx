@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export type HeroImage = {
   src: string;
   alt: string;
-  /** CSS object-position — subject landmark in the open half opposite the lockup. */
+  /** CSS object-position - subject landmark in the open half opposite the lockup. */
   focal: string;
 };
 
@@ -24,7 +24,7 @@ type Props = {
 export const HERO_FILL = "#0d1116";
 
 /**
- * Shared banner frame — website-banners skill:
+ * Shared banner frame - website-banners skill:
  * - Height hugs the type lockup (+ modest padding), not a tall vw photo stage
  * - Left-justified type → gradient from the left; fades before the subject
  * - Photo + gradient on a centered media plane max 1600px; ink fills beyond
@@ -45,7 +45,7 @@ export function PageHero({
       className="relative isolate overflow-hidden text-white"
       style={{ backgroundColor: HERO_FILL }}
     >
-      {/* Capped media plane — ultrawide gets ink fill past ~1600px */}
+      {/* Capped media plane - ultrawide gets ink fill past ~1600px */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-y-0 left-1/2 w-full max-w-[1600px] -translate-x-1/2 overflow-hidden"
@@ -64,7 +64,7 @@ export function PageHero({
           className="absolute inset-0 hidden bg-gradient-to-r from-[#0d1116] from-0% via-[#0d1116]/90 via-30% to-transparent to-[68%] md:block"
           aria-hidden
         />
-        {/* Mobile: type still left-aligned in the short frame — side scrub + light bottom for contrast */}
+        {/* Mobile: type still left-aligned in the short frame - side scrub + light bottom for contrast */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-[#0d1116] from-0% via-[#0d1116]/88 via-40% to-transparent to-[75%] md:hidden"
           aria-hidden
@@ -85,7 +85,7 @@ export function PageHero({
         />
       </div>
 
-      {/* Lockup-hugging height — pad the type (+ header clearance), never a tall vw stage */}
+      {/* Lockup-hugging height - pad the type (+ header clearance), never a tall vw stage */}
       <div
         className={`site-wrap relative flex items-end ${
           home

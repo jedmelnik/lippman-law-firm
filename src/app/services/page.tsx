@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services | Steve's Auto Care Novato",
   description:
-    "Maintenance and repair for Honda, Acura, Toyota, and Lexus in Novato—OEM fluids, manufacturer schedules, and proper torque on critical fasteners.",
+    "Maintenance and repair for Honda, Acura, Toyota, and Lexus in Novato - OEM fluids, manufacturer schedules, and proper torque on critical fasteners.",
 };
 
 const serviceTiers = [
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         <PageHero
           kicker="What we do"
           title="Services"
-          lede="Maintenance and repair the right way—Japanese vehicles with an emphasis on Honda, Acura, Toyota, and Lexus."
+          lede="Maintenance and repair the right way - Japanese vehicles with an emphasis on Honda, Acura, Toyota, and Lexus."
           size="page"
           image={{
             src: "/images/service-maintenance.jpg",
@@ -57,7 +57,7 @@ export default function ServicesPage() {
         />
       </div>
 
-      {/* Maintenance — original Novato page copy */}
+      {/* Maintenance - original Novato page copy */}
       <section className="border-b border-border/70">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-14 md:px-8 md:py-20">
           <div>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
               schedule.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-foreground/90">
-              Vehicles have changed—and so have the fluids that keep them
+              Vehicles have changed - and so have the fluids that keep them
               reliable and trouble-free. We install original-equipment fluids to
               ensure your warranty is kept intact and your vehicle is properly
               maintained.
@@ -115,7 +115,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Repair — original Novato page copy */}
+      {/* Repair - original Novato page copy */}
       <section>
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:gap-14 md:px-8 md:py-20">
           <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-sm bg-steel/40 md:order-1 md:aspect-[5/4]">
@@ -135,7 +135,7 @@ export default function ServicesPage() {
               Factory fluids. Proper torque.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-foreground/90">
-              Consumers should beware of fluids that are not vehicle-specific—such
+              Consumers should beware of fluids that are not vehicle-specific - such
               as universal transmission, power steering, and coolant/antifreeze.
               These fluids can void your warranty and cause poor performance as
               well as reliability issues.

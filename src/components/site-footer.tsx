@@ -55,7 +55,7 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-/** Combined contact CTA + site footer — one dark closing band sitewide. */
+/** Combined contact CTA + site footer - one dark closing band sitewide. */
 export function SiteFooter() {
   return (
     <footer className="relative mt-auto overflow-hidden bg-secondary text-secondary-foreground">

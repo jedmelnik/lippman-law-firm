@@ -14,14 +14,14 @@ const services = [
   },
   {
     title: "Repair",
-    body: "From brakes to radiators, we use factory-correct fluids and torque wrenches on wheels, drain plugs, spark plugs, and critical fasteners—no shortcuts.",
+    body: "From brakes to radiators, we use factory-correct fluids and torque wrenches on wheels, drain plugs, spark plugs, and critical fasteners - no shortcuts.",
     image: "/images/service-repair.jpg",
     imageAlt:
       "Torque wrench at a wheel hub with spark plugs staged on a tool cart in the shop bay",
   },
   {
     title: "Honest evaluation",
-    body: "Integrity starts with a clear assessment of what’s needed and ends with your complete satisfaction—not upsells you don’t need.",
+    body: "Integrity starts with a clear assessment of what’s needed and ends with your complete satisfaction - not upsells you don’t need.",
     image: "/images/service-evaluation.jpg",
     imageAlt:
       "Multi-point inspection checklist and diagnostic scanner on an open engine bay",
@@ -31,7 +31,7 @@ const services = [
 export default function HomePage() {
   return (
     <main id="top" className="flex flex-1 flex-col">
-      {/* Hero — compact banner on mobile, full-viewport on md+ */}
+      {/* Hero - compact banner on mobile, full-viewport on md+ */}
       <section className="relative overflow-hidden text-white md:min-h-[100svh]">
         <div className="absolute inset-0">
           <Image
@@ -63,7 +63,7 @@ export default function HomePage() {
           </h1>
           <div className="brand-rule mt-3 h-[3px] w-20 bg-brand md:mt-4 md:w-32" />
           <p className="animate-rise-delay-2 mt-4 max-w-xl font-display text-[clamp(1.25rem,4.5vw,2.35rem)] leading-tight tracking-wide text-white/95 md:mt-6">
-            Dealer-level care for Japanese cars—without the dealership wait.
+            Dealer-level care for Japanese cars - without the dealership wait.
           </p>
           <p className="animate-rise-delay-2 mt-3 max-w-lg text-[0.95rem] leading-relaxed text-white/80 md:mt-4 md:text-lg">
             Factory-trained specialists led by ASE Certified Master Technician{" "}
@@ -106,7 +106,7 @@ export default function HomePage() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/90">
               Steve&apos;s Auto Care is dedicated to doing our best work for you
               at our shop in Novato. We build long-term relationships on the
-              quality of our work—factory-trained Honda™ and Acura™ specialists,
+              quality of our work - factory-trained Honda™ and Acura™ specialists,
               with most other Japanese cars welcome.
             </p>
           </div>
@@ -117,13 +117,13 @@ export default function HomePage() {
             <p className="mt-3 text-base leading-relaxed text-muted-foreground">
               AA in Auto Technologies (De Anza College). ASE Certified Master
               Technician. Honda and Acura master technician with 30+ years of
-              experience—honesty and integrity as the standard.
+              experience - honesty and integrity as the standard.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services — one job, no card clutter */}
+      {/* Services - one job, no card clutter */}
       <section
         id="services"
         className="border-y border-border/70 bg-[#f4f7fa]/80"
@@ -136,7 +136,7 @@ export default function HomePage() {
             Maintenance and repair the right way
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-            Minor, intermediate, major, and 100K services—with an emphasis on
+            Minor, intermediate, major, and 100K services - with an emphasis on
             Honda, Acura, Toyota, and Lexus.
           </p>
           <ul className="mt-12 divide-y divide-border/80 border-y border-border/80">
@@ -189,7 +189,7 @@ export default function HomePage() {
               {site.yelpRating} stars on Yelp
             </h2>
             <p className="mt-3 text-lg text-muted-foreground">
-              From {site.yelpReviews} reviews—and counting.
+              From {site.yelpReviews} reviews - and counting.
             </p>
           </div>
           <Button

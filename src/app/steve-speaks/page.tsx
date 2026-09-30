@@ -10,7 +10,7 @@ import { getChannelVideos } from "@/lib/youtube";
 export const metadata: Metadata = {
   title: "Steve Speaks | Steve's Auto Care Novato",
   description:
-    "Watch Steve Lite share straight talk on Honda and Acura care—fluids, torque, warranties, and more from Steve's Auto Care in Novato.",
+    "Watch Steve Lite share straight talk on Honda and Acura care - fluids, torque, warranties, and more from Steve's Auto Care in Novato.",
 };
 
 /** Keep the page fresh as new YouTube uploads appear (~hourly). */
@@ -26,12 +26,12 @@ export default async function SteveSpeaksPage() {
         <PageHero
           kicker="From the shop floor"
           title="Steve Speaks"
-          lede={`Short videos from ${site.owner} on Honda, Acura, and Japanese vehicle care—factory fluids, proper torque, warranties, and the checklist we use every day.`}
+          lede={`Short videos from ${site.owner} on Honda, Acura, and Japanese vehicle care - factory fluids, proper torque, warranties, and the checklist we use every day.`}
           size="page"
           image={{
             src: "/images/steve-speaks-hero-v7.jpg",
             alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
-            // Focal: Steve's head/eyes — open right half; Y biased up to keep headroom
+            // Focal: Steve's head/eyes - open right half; Y biased up to keep headroom
             focal: "78% 28%",
           }}
           actions={

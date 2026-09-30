@@ -1,6 +1,6 @@
 # Steve's Auto Care
 
-Modern Next.js rebuild for **Steve's Auto Care** — Honda and Acura specialists in Novato, CA.
+Modern Next.js rebuild for **Steve's Auto Care** - Honda and Acura specialists in Novato, CA.
 
 Original site: [stevesautocarenovato.com](http://stevesautocarenovato.com/)
 
@@ -27,14 +27,14 @@ npm start
 
 ## Pages
 
-- `/` — homepage
-- `/contact` — phone, email, hours, address, and map
-- `/steve-speaks` — YouTube videos from the shop channel (newest first). Pulled from YouTube’s public channel RSS feed and refreshed about every hour via ISR — no API key required. YouTube’s feed returns the most recent uploads (typically up to ~15).
+- `/` - homepage
+- `/contact` - phone, email, hours, address, and map
+- `/steve-speaks` - YouTube videos from the shop channel (newest first). Pulled from YouTube’s public channel RSS feed and refreshed about every hour via ISR - no API key required. YouTube’s feed returns the most recent uploads (typically up to ~15).
 
 ## Business details (source of truth for copy)
 
 - **Phone:** (415) 899-1115
 - **Address:** 879 Sweetser Ave, Novato, CA 94945
-- **Hours:** Monday–Friday, 8:00am–5:00pm
+- **Hours:** Monday-Friday, 8:00am-5:00pm
 - **Email:** stevesautocare@comcast.net
 - **YouTube:** https://www.youtube.com/@stevesautocarenovato6588
