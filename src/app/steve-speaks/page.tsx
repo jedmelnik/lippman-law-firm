@@ -30,11 +30,11 @@ export default async function SteveSpeaksPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[48%_42%] sm:object-[50%_40%] lg:object-center"
+            className="object-cover object-[62%_46%] sm:object-[60%_44%] lg:object-[58%_42%]"
           />
-          {/* Title stage on the left wall; clears before Steve (~center-right) */}
+          {/* Title stage only — real photo of Steve stays clear on the right */}
           <div
-            className="absolute inset-0 bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_34%,rgba(13,17,22,0.7)_48%,rgba(13,17,22,0.25)_60%,transparent_72%)] sm:bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_28%,rgba(13,17,22,0.62)_42%,rgba(13,17,22,0.2)_54%,transparent_66%)] lg:bg-[linear-gradient(90deg,#0d1116_0%,rgba(13,17,22,0.85)_20%,rgba(13,17,22,0.4)_36%,rgba(13,17,22,0.12)_48%,transparent_60%)]"
+            className="absolute inset-0 bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_36%,rgba(13,17,22,0.68)_50%,rgba(13,17,22,0.22)_62%,transparent_74%)] sm:bg-[linear-gradient(90deg,#0d1116_0%,#0d1116_30%,rgba(13,17,22,0.58)_44%,rgba(13,17,22,0.18)_56%,transparent_68%)] lg:bg-[linear-gradient(90deg,#0d1116_0%,rgba(13,17,22,0.82)_22%,rgba(13,17,22,0.38)_38%,rgba(13,17,22,0.1)_50%,transparent_62%)]"
             aria-hidden
           />
         </div>
