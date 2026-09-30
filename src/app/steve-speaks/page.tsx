@@ -27,10 +27,9 @@ export default async function SteveSpeaksPage() {
           kicker="From the shop floor"
           title="Steve Speaks"
           lede={`Short videos from ${site.owner} on Honda, Acura, and Japanese vehicle care—factory fluids, proper torque, warranties, and the checklist we use every day.`}
-          ledeOnMobile
           size="page"
           image={{
-            src: "/images/steve-speaks-hero.jpg",
+            src: "/images/steve-speaks-hero-v4.jpg",
             alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
             // Focal: Steve's head/eyes — open right half between lockup and media edge
             focal: "76% 48%",
