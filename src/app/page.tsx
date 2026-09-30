@@ -8,14 +8,23 @@ const services = [
   {
     title: "Maintenance",
     body: "We follow the manufacturer’s schedule and install original-equipment fluids so warranties stay intact and your Honda, Acura, Toyota, or Lexus stays reliable.",
+    image: "/images/service-maintenance.jpg",
+    imageAlt:
+      "OEM fluids, oil filter, and service checklist arranged on a shop workbench",
   },
   {
     title: "Repair",
     body: "From brakes to radiators, we use factory-correct fluids and torque wrenches on wheels, drain plugs, spark plugs, and critical fasteners—no shortcuts.",
+    image: "/images/service-repair.jpg",
+    imageAlt:
+      "Torque wrench at a wheel hub with spark plugs staged on a tool cart in the shop bay",
   },
   {
     title: "Honest evaluation",
     body: "Integrity starts with a clear assessment of what’s needed and ends with your complete satisfaction—not upsells you don’t need.",
+    image: "/images/service-evaluation.jpg",
+    imageAlt:
+      "Multi-point inspection checklist and diagnostic scanner on an open engine bay",
   },
 ];
 
@@ -134,14 +143,25 @@ export default function HomePage() {
             {services.map((item) => (
               <li
                 key={item.title}
-                className="grid gap-3 py-8 md:grid-cols-[220px_1fr] md:gap-10"
+                className="grid items-center gap-5 py-8 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10"
               >
-                <h3 className="font-display text-2xl tracking-wide text-ink md:text-3xl">
-                  {item.title}
-                </h3>
-                <p className="max-w-2xl text-base leading-relaxed text-foreground/85 md:text-lg">
-                  {item.body}
-                </p>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-steel/40">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 220px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl tracking-wide text-ink md:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/85 md:text-lg">
+                    {item.body}
+                  </p>
+                </div>
               </li>
             ))}
           </ul>
