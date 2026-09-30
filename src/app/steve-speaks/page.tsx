@@ -32,7 +32,7 @@ export default async function SteveSpeaksPage() {
             src: "/images/steve-speaks-hero-v5.jpg",
             alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
             // Focal: Steve's head/eyes — open right half, below overlay header band
-            focal: "72% 55%",
+            focal: "72% 50%",
           }}
           actions={
             <Button
