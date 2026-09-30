@@ -22,8 +22,8 @@ const services = [
 export default function HomePage() {
   return (
     <main id="top" className="flex flex-1 flex-col">
-      {/* Hero — one composition, brand-first, full-bleed */}
-      <section className="relative min-h-[100svh] overflow-hidden text-white">
+      {/* Hero — compact banner on mobile, full-viewport on md+ */}
+      <section className="relative overflow-hidden text-white md:min-h-[100svh]">
         <div className="absolute inset-0">
           <Image
             src="/images/hero-shop.jpg"
@@ -31,10 +31,10 @@ export default function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="hero-ken object-cover object-center"
+            className="hero-ken object-cover object-[center_35%] md:object-center"
           />
           <div
-            className="absolute inset-0 bg-[linear-gradient(105deg,rgba(13,17,22,0.88)_0%,rgba(13,17,22,0.72)_42%,rgba(13,17,22,0.45)_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,17,22,0.72)_0%,rgba(13,17,22,0.82)_100%)] md:bg-[linear-gradient(105deg,rgba(13,17,22,0.88)_0%,rgba(13,17,22,0.72)_42%,rgba(13,17,22,0.45)_100%)]"
             aria-hidden
           />
           <div
@@ -45,27 +45,27 @@ export default function HomePage() {
 
         <SiteHeader />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-14 pt-28 md:justify-center md:px-8 md:pb-20 md:pt-24">
-          <p className="animate-rise font-body text-xs font-semibold uppercase tracking-[0.22em] text-white/70 md:text-sm">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col px-5 pb-8 pt-[4.75rem] md:min-h-[100svh] md:justify-center md:px-8 md:pb-20 md:pt-24">
+          <p className="animate-rise font-body text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/70 md:text-sm">
             Novato · Honda &amp; Acura specialists
           </p>
-          <h1 className="animate-rise-delay-1 mt-3 max-w-4xl font-display text-[clamp(3.4rem,12vw,7.5rem)] leading-[0.9] tracking-[0.02em] text-white">
+          <h1 className="animate-rise-delay-1 mt-2 max-w-4xl font-display text-[clamp(2.75rem,11vw,7.5rem)] leading-[0.9] tracking-[0.02em] text-white md:mt-3">
             {site.name}
           </h1>
-          <div className="brand-rule mt-4 h-[3px] w-24 bg-brand md:w-32" />
-          <p className="animate-rise-delay-2 mt-6 max-w-xl font-display text-[clamp(1.5rem,4vw,2.35rem)] leading-tight tracking-wide text-white/95">
+          <div className="brand-rule mt-3 h-[3px] w-20 bg-brand md:mt-4 md:w-32" />
+          <p className="animate-rise-delay-2 mt-4 max-w-xl font-display text-[clamp(1.25rem,4.5vw,2.35rem)] leading-tight tracking-wide text-white/95 md:mt-6">
             Dealer-level care for Japanese cars—without the dealership wait.
           </p>
-          <p className="animate-rise-delay-2 mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+          <p className="animate-rise-delay-2 mt-3 max-w-lg text-[0.95rem] leading-relaxed text-white/80 md:mt-4 md:text-lg">
             Factory-trained specialists led by ASE Certified Master Technician{" "}
             {site.owner}. Over 30 years keeping Marin’s Hondas and Acuras
             running right.
           </p>
-          <div className="animate-rise-delay-3 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="animate-rise-delay-3 mt-5 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-8">
             <Button
               render={<a href={site.phoneHref} />}
               size="lg"
-              className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground shadow-none transition-transform hover:bg-brand/90 hover:scale-[1.02] active:scale-[0.99]"
+              className="h-11 rounded-md bg-brand px-5 text-sm font-semibold text-brand-foreground shadow-none transition-transform hover:bg-brand/90 hover:scale-[1.02] active:scale-[0.99] md:h-12 md:px-6 md:text-base"
             >
               Call {site.phone}
             </Button>
@@ -73,7 +73,7 @@ export default function HomePage() {
               render={<a href={site.mapsUrl} target="_blank" rel="noreferrer" />}
               variant="outline"
               size="lg"
-              className="h-12 rounded-md border-white/40 bg-white/5 px-6 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+              className="h-11 rounded-md border-white/40 bg-white/5 px-5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white md:h-12 md:px-6 md:text-base"
             >
               Get directions
             </Button>
