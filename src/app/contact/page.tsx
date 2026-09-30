@@ -68,8 +68,8 @@ export default function ContactPage() {
           image={{
             src: "/images/contact-team-hero-v5.jpg",
             alt: `The ${site.name} team at the Novato shop`,
-            // Focal: group midpoint in open right half (team ~56–93% X on ~3.4:1 plate)
-            focal: "75% 45%",
+            // Focal: group midpoint in open right half (team ~54–97% X on ~3.4:1 plate)
+            focal: "76% 45%",
           }}
           actions={
             <>
