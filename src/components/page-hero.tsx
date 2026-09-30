@@ -85,12 +85,12 @@ export function PageHero({
         />
       </div>
 
-      {/* Lockup-hugging height — modest padding, no tall vw stage */}
+      {/* Lockup-hugging height — pad the type, never a tall vw photo stage */}
       <div
         className={`site-wrap relative flex items-end ${
           home
-            ? "min-h-[clamp(15rem,26vw,28rem)] py-10 md:py-14"
-            : "min-h-[clamp(13.5rem,22vw,24rem)] py-9 md:py-12"
+            ? "min-h-[clamp(14rem,24vw,26rem)] py-9 md:py-12"
+            : "min-h-0 py-8 md:py-10 lg:py-12"
         }`}
       >
         <div

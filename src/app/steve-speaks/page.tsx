@@ -32,8 +32,8 @@ export default async function SteveSpeaksPage() {
           image={{
             src: "/images/steve-speaks-hero.jpg",
             alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
-            // Focal: Steve's head/eyes — open right half, clear of left lockup
-            focal: "76% 52%",
+            // Focal: Steve's head/eyes — open right half between lockup and media edge
+            focal: "78% 42%",
           }}
           actions={
             <Button
