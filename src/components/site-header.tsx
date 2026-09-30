@@ -29,7 +29,7 @@ export function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
         </a>
         <nav className="flex items-center gap-2 sm:gap-4">
           <a
-            href="/#services"
+            href="/services"
             className={
               isOverlay
                 ? "hidden text-sm font-medium text-white/85 transition-colors hover:text-white sm:inline"

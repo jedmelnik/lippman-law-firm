@@ -66,16 +66,22 @@ export function SiteFooter() {
         <div className="flex flex-col gap-4 sm:items-end">
           <div className="flex flex-wrap gap-4">
             <a
-              href="/contact"
+              href="/services"
               className="font-medium text-ink underline-offset-4 hover:underline"
             >
-              Contact
+              Services
             </a>
             <a
               href="/steve-speaks"
               className="font-medium text-ink underline-offset-4 hover:underline"
             >
               Steve Speaks
+            </a>
+            <a
+              href="/contact"
+              className="font-medium text-ink underline-offset-4 hover:underline"
+            >
+              Contact
             </a>
           </div>
           <ul className="flex items-center gap-2">

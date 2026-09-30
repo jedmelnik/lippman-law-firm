@@ -165,6 +165,16 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+          <div className="mt-10">
+            <Button
+              render={<a href="/services" />}
+              variant="outline"
+              size="lg"
+              className="h-11 rounded-md border-ink/20 bg-transparent px-5 font-semibold text-ink hover:bg-ink hover:text-white"
+            >
+              Full services details
+            </Button>
+          </div>
         </div>
       </section>
 
