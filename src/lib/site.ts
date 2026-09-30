@@ -19,5 +19,6 @@ export const site = {
   yelpRating: "5.0",
   yelpReviews: "282",
   youtubeUrl: "https://www.youtube.com/@stevesautocarenovato6588",
+  youtubeChannelId: "UCaB0hQekXY42mXjJ8AMnyyg",
   owner: "Steve Lite",
 } as const;
