@@ -254,6 +254,19 @@ export default function HomePage() {
                 </a>
               </dd>
             </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
+                Email
+              </dt>
+              <dd className="mt-2 text-lg">
+                <a
+                  href={site.emailHref}
+                  className="font-semibold text-white underline-offset-4 hover:underline"
+                >
+                  {site.email}
+                </a>
+              </dd>
+            </div>
           </dl>
         </div>
       </section>
