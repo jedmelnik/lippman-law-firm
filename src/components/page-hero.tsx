@@ -42,7 +42,7 @@ export function PageHero({
 
   return (
     <section
-      className="relative isolate overflow-hidden text-white"
+      className="relative isolate -mb-px overflow-hidden pb-px text-white"
       style={{ backgroundColor: HERO_FILL }}
     >
       {/* Capped media plane - ultrawide gets ink fill past ~1600px */}

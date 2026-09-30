@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { PageHero } from "@/components/page-hero";
+import { HERO_FILL, PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
@@ -58,7 +58,7 @@ const details = [
 export default function ContactPage() {
   return (
     <main className="flex flex-1 flex-col">
-      <div className="relative">
+      <div className="relative" style={{ backgroundColor: HERO_FILL }}>
         <SiteHeader variant="overlay" />
         <PageHero
           kicker="Contact"

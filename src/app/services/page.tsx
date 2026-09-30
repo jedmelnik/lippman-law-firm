@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { PageHero } from "@/components/page-hero";
+import { HERO_FILL, PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
@@ -22,7 +22,7 @@ const serviceTiers = [
 export default function ServicesPage() {
   return (
     <main className="flex flex-1 flex-col">
-      <div className="relative">
+      <div className="relative" style={{ backgroundColor: HERO_FILL }}>
         <SiteHeader variant="overlay" />
         <PageHero
           kicker="What we do"
