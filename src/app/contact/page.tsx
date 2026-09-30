@@ -66,10 +66,10 @@ export default function ContactPage() {
           lede="Consultations are by appointment so we can understand your needs, explain your options, and help you choose what’s best for your vehicle and budget."
           size="page"
           image={{
-            src: "/images/contact-team-hero.jpg",
+            src: "/images/contact-team-hero-v2.jpg",
             alt: `The ${site.name} team at the Novato shop`,
-            // Focal: team faces (Steve / group) in the open right half, clear of left lockup
-            focal: "78% 42%",
+            // Focal: team faces in the open right half; real photo only (no baked pad/smear)
+            focal: "70% 40%",
           }}
           actions={
             <>
