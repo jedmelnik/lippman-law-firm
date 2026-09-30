@@ -29,10 +29,10 @@ export default async function SteveSpeaksPage() {
           lede={`Short videos from ${site.owner} on Honda, Acura, and Japanese vehicle care—factory fluids, proper torque, warranties, and the checklist we use every day.`}
           size="page"
           image={{
-            src: "/images/steve-speaks-hero-v6.jpg",
+            src: "/images/steve-speaks-hero-v7.jpg",
             alt: "Steve Lite using a torque wrench under a car at Steve's Auto Care",
-            // Focal: Steve's head/eyes — open right half, below overlay header band
-            focal: "78% 50%",
+            // Focal: Steve's head/eyes — open right half; Y biased up to keep headroom
+            focal: "78% 28%",
           }}
           actions={
             <Button
