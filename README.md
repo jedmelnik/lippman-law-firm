@@ -28,6 +28,7 @@ npm start
 ## Pages
 
 - `/` — homepage
+- `/contact` — phone, email, hours, address, and map
 - `/steve-speaks` — YouTube videos from the shop channel (newest first). Pulled from YouTube’s public channel RSS feed and refreshed about every hour via ISR — no API key required. YouTube’s feed returns the most recent uploads (typically up to ~15).
 
 ## Business details (source of truth for copy)

@@ -195,99 +195,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Visit / Contact */}
-      <section
-        id="visit"
-        className="relative overflow-hidden bg-secondary text-secondary-foreground"
-      >
+      {/* Contact CTA → full details on /contact */}
+      <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,16,46,0.28),transparent_50%)]"
           aria-hidden
         />
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2 md:gap-16 md:px-8 md:py-28">
-          <div>
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-8 md:py-20">
+          <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
-              Visit the shop
+              Contact
             </p>
             <h2 className="mt-3 font-display text-4xl tracking-wide text-white md:text-5xl">
               Ready when you are
             </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-white/75 md:text-lg">
-              Consultations by appointment so we can understand your needs,
-              explain your options, and help you choose what’s best for your
-              vehicle and budget.
+            <p className="mt-4 text-base leading-relaxed text-white/75 md:text-lg">
+              Appointments by phone or email at {site.address.street}, Novato.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button
-                render={<a href={site.phoneHref} />}
-                size="lg"
-                className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground hover:bg-brand/90"
-              >
-                Schedule by phone
-              </Button>
-              <Button
-                render={<a href={site.emailHref} />}
-                variant="outline"
-                size="lg"
-                className="h-12 rounded-md border-white/30 bg-transparent px-6 text-base font-semibold text-white hover:bg-white/10 hover:text-white"
-              >
-                Email the shop
-              </Button>
-            </div>
           </div>
-
-          <dl className="space-y-8 border-t border-white/15 pt-8 md:border-t-0 md:border-l md:pl-12 md:pt-0">
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                Address
-              </dt>
-              <dd className="mt-2 text-lg leading-snug text-white">
-                <a
-                  href={site.mapsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline-offset-4 transition-colors hover:text-white hover:underline"
-                >
-                  {site.address.street}
-                  <br />
-                  {site.address.city}, {site.address.state}{" "}
-                  {site.address.zip}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                Hours
-              </dt>
-              <dd className="mt-2 text-lg text-white">{site.hours}</dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                Phone
-              </dt>
-              <dd className="mt-2 text-lg">
-                <a
-                  href={site.phoneHref}
-                  className="font-semibold text-white underline-offset-4 hover:underline"
-                >
-                  {site.phone}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                Email
-              </dt>
-              <dd className="mt-2 text-lg">
-                <a
-                  href={site.emailHref}
-                  className="font-semibold text-white underline-offset-4 hover:underline"
-                >
-                  {site.email}
-                </a>
-              </dd>
-            </div>
-          </dl>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button
+              render={<a href="/contact" />}
+              size="lg"
+              className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground hover:bg-brand/90"
+            >
+              Contact the shop
+            </Button>
+            <Button
+              render={<a href={site.phoneHref} />}
+              variant="outline"
+              size="lg"
+              className="h-12 rounded-md border-white/30 bg-transparent px-6 text-base font-semibold text-white hover:bg-white/10 hover:text-white"
+            >
+              Call {site.phone}
+            </Button>
+          </div>
         </div>
       </section>
 

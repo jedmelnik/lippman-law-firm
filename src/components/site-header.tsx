@@ -49,14 +49,14 @@ export function SiteHeader({ variant = "overlay" }: SiteHeaderProps) {
             Steve Speaks
           </a>
           <a
-            href={isOverlay ? "#visit" : "/#visit"}
+            href="/contact"
             className={
               isOverlay
                 ? "hidden text-sm font-medium text-white/85 transition-colors hover:text-white lg:inline"
                 : "hidden text-sm font-medium text-ink/70 transition-colors hover:text-ink lg:inline"
             }
           >
-            Visit
+            Contact
           </a>
           <Button
             render={<a href={site.phoneHref} />}
