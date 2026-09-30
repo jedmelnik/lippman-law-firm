@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
@@ -57,56 +58,50 @@ const details = [
 export default function ContactPage() {
   return (
     <main className="flex flex-1 flex-col">
-      <SiteHeader variant="solid" />
-
-      <section className="relative overflow-hidden border-b border-border/70">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,16,46,0.08),transparent_45%),radial-gradient(ellipse_at_bottom_right,rgba(28,37,46,0.08),transparent_50%)]"
-          aria-hidden
+      <div className="relative">
+        <SiteHeader variant="overlay" />
+        <PageHero
+          kicker="Contact"
+          title="Get in touch"
+          lede="Consultations are by appointment so we can understand your needs, explain your options, and help you choose what’s best for your vehicle and budget."
+          size="page"
+          image={{
+            src: "/images/contact-map-hero.jpg",
+            alt: `Map showing ${site.name} at ${site.address.full}`,
+            // Focal: shop pin / Novato street grid in the open right half
+            focal: "62% 48%",
+          }}
+          actions={
+            <>
+              <Button
+                render={<a href={site.phoneHref} />}
+                size="lg"
+                className="h-11 rounded-md bg-brand px-5 font-semibold text-brand-foreground hover:bg-brand/90"
+              >
+                Call {site.phone}
+              </Button>
+              <Button
+                render={<a href={site.emailHref} />}
+                variant="outline"
+                size="lg"
+                className="h-11 rounded-md border-white/35 bg-white/5 px-5 font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+              >
+                Email the shop
+              </Button>
+              <Button
+                render={
+                  <a href={site.mapsUrl} target="_blank" rel="noreferrer" />
+                }
+                variant="outline"
+                size="lg"
+                className="h-11 rounded-md border-white/35 bg-white/5 px-5 font-semibold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
+              >
+                Get directions
+              </Button>
+            </>
+          }
         />
-        <div className="relative mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Contact
-          </p>
-          <h1 className="mt-3 font-display text-5xl tracking-wide text-ink md:text-6xl">
-            Get in touch
-          </h1>
-          <div className="mt-4 h-[3px] w-24 bg-brand" />
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/90">
-            Consultations are by appointment so we can understand your needs,
-            explain your options, and help you choose what’s best for your
-            vehicle and budget. Call or email—we look forward to working with
-            you.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button
-              render={<a href={site.phoneHref} />}
-              size="lg"
-              className="h-12 rounded-md bg-brand px-6 text-base font-semibold text-brand-foreground hover:bg-brand/90"
-            >
-              Call {site.phone}
-            </Button>
-            <Button
-              render={<a href={site.emailHref} />}
-              variant="outline"
-              size="lg"
-              className="h-12 rounded-md border-ink/20 bg-transparent px-6 text-base font-semibold text-ink hover:bg-ink hover:text-white"
-            >
-              Email the shop
-            </Button>
-            <Button
-              render={
-                <a href={site.mapsUrl} target="_blank" rel="noreferrer" />
-              }
-              variant="outline"
-              size="lg"
-              className="h-12 rounded-md border-ink/20 bg-transparent px-6 text-base font-semibold text-ink hover:bg-ink hover:text-white"
-            >
-              Get directions
-            </Button>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <section className="mx-auto w-full max-w-6xl flex-1 px-5 py-14 md:px-8 md:py-20">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16 md:items-start">
