@@ -27,7 +27,7 @@ export default function ContactPage() {
             alt: "Handshake across a desk during a consultation",
             width: 1280,
             height: 720,
-            focalX: 0.58,
+            focalX: 0.5,
             focalY: 0.48,
           }}
           actions={

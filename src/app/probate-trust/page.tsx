@@ -34,14 +34,18 @@ export default function ProbateTrustPage() {
           kicker="Probate & trust"
           title="Probate and trust help"
           lede="Counsel for executors and beneficiaries."
-          // Focal: center of the clasped hands
+          // Focal: clasp. Single frame with open office on the left
+          // so the short banner can bleed the photo without cropping the hands.
           image={{
-            src: "/images/hero-handshake.jpg",
+            src: "/images/hero-probate.jpg",
             alt: "Two people shaking hands across a desk",
             width: 1280,
             height: 720,
-            focalX: 0.58,
-            focalY: 0.48,
+            focalX: 0.68,
+            focalY: 0.46,
+            fillFrame: true,
+            bleed: true,
+            subject: { l: 0.22, t: 0.3, r: 0.98, b: 0.74 },
           }}
           actions={
             <Button

@@ -16,6 +16,11 @@ export type HeroImage = {
   subject?: { l: number; t: number; r: number; b: number };
   /** Wide screens scale `subject` to the banner height so the photo covers more width. */
   fillFrame?: boolean;
+  /**
+   * Full-bleed photo for this banner only: darker lockup scrim, no right-edge
+   * fade over the subject, and on phones the subject sits below the title.
+   */
+  bleed?: boolean;
 };
 
 type Props = {
@@ -68,10 +73,15 @@ export function PageHero({
           focalY={image.focalY}
           subject={image.subject}
           fillFrame={image.fillFrame}
+          seatLow={image.bleed}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
-          className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/85 via-42% to-transparent to-[75%] md:block"
+          className={`absolute inset-0 hidden bg-gradient-to-r md:block ${
+            image.bleed
+              ? "from-[#132033] from-0% via-[#132033]/90 via-[40%] to-transparent to-[64%]"
+              : "from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%]"
+          }`}
           aria-hidden
         />
         {/* Mobile: darken the top behind the title; leave the lower subject clear */}
@@ -80,10 +90,12 @@ export function PageHero({
           aria-hidden
         />
         {/* Ultrawide: dissolve the plane's right edge into section navy */}
-        <div
-          className="absolute inset-y-0 right-0 hidden w-36 bg-gradient-to-l from-[#132033] to-transparent min-[1600px]:block"
-          aria-hidden
-        />
+        {image.bleed ? null : (
+          <div
+            className="absolute inset-y-0 right-0 hidden w-36 bg-gradient-to-l from-[#132033] to-transparent min-[1600px]:block"
+            aria-hidden
+          />
+        )}
         {/* Soft top for overlay header */}
         <div
           className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#132033]/45 to-transparent"

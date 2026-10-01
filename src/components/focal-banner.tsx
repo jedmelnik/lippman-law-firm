@@ -25,6 +25,8 @@ type Props = {
    * covers more of the frame. Home uses subject only on tall (mobile) frames.
    */
   fillFrame?: boolean;
+  /** On tall frames, sit the subject in the lower open area under the title. */
+  seatLow?: boolean;
 };
 
 type Box = {
@@ -57,6 +59,7 @@ export function FocalBanner({
   targetY = 0.62,
   subject,
   fillFrame = false,
+  seatLow = false,
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box | null>(null);
@@ -133,14 +136,21 @@ export function FocalBanner({
         r: subject?.r ?? Math.min(1, focalX + 0.2),
         b: subject?.b ?? Math.min(1, focalY + 0.25),
       };
-      const scale = Math.max(cW / width, cH / height);
+      const cover = Math.max(cW / width, cH / height);
+      // Phones: zoom so the top of the subject starts under the title.
+      const seated = seatLow
+        ? Math.max(cover, (cH * 0.58) / Math.max(0.15, region.t) / height)
+        : cover;
+      const scale = seated;
       const sW = width * scale;
       const sH = height * scale;
 
       let left = cW / 2 - ((region.l + region.r) / 2) * sW;
       left = Math.min(0, Math.max(cW - sW, left));
 
-      let top = cH / 2 - ((region.t + region.b) / 2) * sH;
+      let top = seatLow
+        ? cH * 0.58 - region.t * sH
+        : cH / 2 - ((region.t + region.b) / 2) * sH;
       top = Math.min(0, Math.max(cH - sH, top));
 
       setBox({
@@ -168,6 +178,7 @@ export function FocalBanner({
     subject?.r,
     subject?.b,
     fillFrame,
+    seatLow,
   ]);
 
   const mask = box?.mask
