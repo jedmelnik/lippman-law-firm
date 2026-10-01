@@ -21,7 +21,9 @@ export default function ConservatorshipPage() {
           kicker="Conservatorship"
           title="Protect family members"
           lede="Act quickly when capacity declines."
-          // Focal: center of the overlapping palms (not the sweater cuffs)
+          // Focal: center of the overlapping palms (not the sweater cuffs).
+          // fillFrame: short interior banners need a subject box or contain
+          // leaves a ~556px strip and a wide navy dead zone.
           image={{
             src: "/images/hero-hands.jpg",
             alt: "Family hands stacked together in a show of support",
@@ -29,6 +31,9 @@ export default function ConservatorshipPage() {
             height: 720,
             focalX: 0.58,
             focalY: 0.5,
+            fillFrame: true,
+            bleed: true,
+            subject: { l: 0.42, t: 0.28, r: 0.99, b: 0.72 },
           }}
           actions={
             <Button

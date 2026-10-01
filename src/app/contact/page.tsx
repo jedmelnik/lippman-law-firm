@@ -21,14 +21,18 @@ export default function ContactPage() {
           kicker="Contact"
           title="Schedule a consultation"
           lede="Call or write from downtown San Rafael."
-          // Focal: center of the clasped hands
+          // Focal: clasp of the handshake. fillFrame so the short banner
+          // is not a narrow contain strip with a wide navy dead zone.
           image={{
             src: "/images/hero-handshake.jpg",
             alt: "Handshake across a desk during a consultation",
             width: 1280,
             height: 720,
-            focalX: 0.5,
+            focalX: 0.55,
             focalY: 0.48,
+            fillFrame: true,
+            bleed: true,
+            subject: { l: 0.12, t: 0.25, r: 0.95, b: 0.72 },
           }}
           actions={
             <Button

@@ -32,7 +32,8 @@ export default function EstatePlanningPage() {
           kicker="Estate planning"
           title="Plan for the future"
           lede="Wills, trusts, and a free first consultation."
-          // Focal: pen tip on the page
+          // Focal: pen tip on the page. fillFrame so the short banner
+          // is not a narrow contain strip with a wide navy dead zone.
           image={{
             src: "/images/hero-documents.jpg",
             alt: "Hands signing estate planning documents with a pen",
@@ -40,6 +41,9 @@ export default function EstatePlanningPage() {
             height: 720,
             focalX: 0.58,
             focalY: 0.5,
+            fillFrame: true,
+            bleed: true,
+            subject: { l: 0.28, t: 0.28, r: 0.98, b: 0.72 },
           }}
           actions={
             <Button

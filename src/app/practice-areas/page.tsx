@@ -22,7 +22,8 @@ export default function PracticeAreasPage() {
           kicker="Practice areas"
           title="Counsel for families"
           lede="Conservatorship, probate, and estate planning."
-          // Focal: pen tip on the page
+          // Focal: pen tip on the page. fillFrame so the short banner
+          // is not a narrow contain strip with a wide navy dead zone.
           image={{
             src: "/images/hero-documents.jpg",
             alt: "Hands signing legal documents at a desk",
@@ -30,6 +31,9 @@ export default function PracticeAreasPage() {
             height: 720,
             focalX: 0.58,
             focalY: 0.5,
+            fillFrame: true,
+            bleed: true,
+            subject: { l: 0.28, t: 0.28, r: 0.98, b: 0.72 },
           }}
           actions={
             <Button
