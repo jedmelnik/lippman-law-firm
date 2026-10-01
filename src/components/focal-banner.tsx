@@ -41,11 +41,14 @@ type Box = {
  * and the container point, so a landmark that is not already at ~78%
  * gets scaled from the wrong spot and clipped.
  *
- * Wide banners contain the whole photo and slide it right.
- * Wide banners with fillFrame scale the subject box to the banner height
+ * Desktop (1024px and up) contains the whole photo and slides it right.
+ * Desktop with fillFrame scales the subject box to the banner height
  * so that region covers more of the frame.
- * Tall banners (mobile) cover the frame and pin the landmark to the center.
+ * Phones and tablets center the landmark and cover the frame.
  */
+
+/** Phone and tablet share the centered crop. Desktop starts at Tailwind `lg`. */
+const DESKTOP_MIN = 1024;
 export function FocalBanner({
   src,
   width,
@@ -69,10 +72,11 @@ export function FocalBanner({
       const cH = frame.clientHeight;
       if (cW === 0 || cH === 0) return;
 
+      const desktop = cW >= DESKTOP_MIN;
       const wide = cW / cH >= width / height;
-      const frameSubject = wide && fillFrame && subject ? subject : null;
+      const frameSubject = desktop && wide && fillFrame && subject ? subject : null;
 
-      if (wide && !frameSubject) {
+      if (desktop && wide && !frameSubject) {
         const scale = Math.min(cW / width, cH / height);
         const sW = width * scale;
         const sH = height * scale;
@@ -123,7 +127,7 @@ export function FocalBanner({
         return;
       }
 
-      // Phones: cover the banner and put the landmark at the center.
+      // Phones and tablets: cover the banner and put the landmark at the center.
       // Cover alone is often only a few pixels wider than the frame, so an
       // off-center landmark cannot reach the middle. Zoom until there is
       // enough photo on every side of the landmark, then clamp.

@@ -76,16 +76,16 @@ export function PageHero({
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
-          className={`absolute inset-0 hidden bg-gradient-to-r md:block ${
+          className={`absolute inset-0 hidden bg-gradient-to-r lg:block ${
             image.bleed
               ? "from-[#132033] from-0% via-[#132033]/90 via-[40%] to-transparent to-[64%]"
               : "from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%]"
           }`}
           aria-hidden
         />
-        {/* Mobile: dim the whole photo so the lockup reads, image still visible */}
+        {/* Phone and tablet: dim the whole photo so the lockup reads */}
         <div
-          className="absolute inset-0 bg-[#132033]/55 md:hidden"
+          className="absolute inset-0 bg-[#132033]/55 lg:hidden"
           aria-hidden
         />
         {/* Ultrawide: dissolve the plane's right edge into section navy */}
