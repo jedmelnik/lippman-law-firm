@@ -22,14 +22,17 @@ export default function AttorneyPage() {
           kicker="Attorney profile"
           title={attorneyProfile.name}
           lede="Conservatorship, estate planning, and probate counsel for Marin County and San Francisco families."
-          // Focal: eyes
+          // Focal: eyes. Focus frame matches the marked photo region
+          // (orange wall, figure, building) so that crop fills the banner.
           image={{
             src: "/images/hero-consult.jpg",
             alt: "Professional advisor in a consultation setting",
             width: 1280,
             height: 720,
-            focalX: 0.57,
-            focalY: 0.34,
+            focalX: 0.62,
+            focalY: 0.22,
+            fillFrame: true,
+            subject: { l: 0.1, t: 0, r: 0.98, b: 0.63 },
           }}
           actions={
             <Button

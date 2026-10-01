@@ -14,6 +14,8 @@ export type HeroImage = {
    * scales around this box instead of letterboxing the whole frame.
    */
   subject?: { l: number; t: number; r: number; b: number };
+  /** Wide screens scale `subject` to the banner height so the photo covers more width. */
+  fillFrame?: boolean;
 };
 
 type Props = {
@@ -65,6 +67,7 @@ export function PageHero({
           focalX={image.focalX}
           focalY={image.focalY}
           subject={image.subject}
+          fillFrame={image.fillFrame}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div

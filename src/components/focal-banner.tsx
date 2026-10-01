@@ -20,6 +20,11 @@ type Props = {
   targetY?: number;
   /** Region that must stay fully on screen. Tall frames scale to this box. */
   subject?: Subject;
+  /**
+   * Wide banners scale this subject box to the banner height so the photo
+   * covers more of the frame. Home uses subject only on tall (mobile) frames.
+   */
+  fillFrame?: boolean;
 };
 
 type Box = {
@@ -37,6 +42,8 @@ type Box = {
  * gets scaled from the wrong spot and clipped.
  *
  * Wide banners contain the whole photo and slide it right.
+ * Wide banners with fillFrame scale the subject box to the banner height
+ * so that region covers more of the frame.
  * Tall banners (mobile) scale to the subject box so the group fills the
  * frame instead of sitting in a short letterboxed strip.
  */
@@ -49,6 +56,7 @@ export function FocalBanner({
   targetX = 0.78,
   targetY = 0.62,
   subject,
+  fillFrame = false,
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box | null>(null);
@@ -63,8 +71,9 @@ export function FocalBanner({
       if (cW === 0 || cH === 0) return;
 
       const wide = cW / cH >= width / height;
+      const frameSubject = wide && fillFrame && subject ? subject : null;
 
-      if (wide) {
+      if (wide && !frameSubject) {
         const scale = Math.min(cW / width, cH / height);
         const sW = width * scale;
         const sH = height * scale;
@@ -78,6 +87,39 @@ export function FocalBanner({
           width: sW,
           height: sH,
           mask: left > 8,
+        });
+        return;
+      }
+
+      if (frameSubject) {
+        // Scale the drawn focus frame so its height fills the banner.
+        // The photo then covers more width instead of sitting in a narrow strip.
+        const subH = Math.max(0.2, frameSubject.b - frameSubject.t) * height;
+        let scale = cH / subH;
+        if (width * scale > cW) scale = cW / width;
+        const sW = width * scale;
+        const sH = height * scale;
+
+        let top = -frameSubject.t * sH;
+        top = Math.min(0, Math.max(cH - sH, top));
+
+        let left = cW - sW;
+        const leftKeepRight = cW - frameSubject.r * sW;
+        const leftKeepLeft = -frameSubject.l * sW;
+        left = Math.min(left, leftKeepRight);
+        left = Math.max(left, leftKeepLeft);
+        if (sW <= cW) {
+          left = Math.min(Math.max(left, 0), cW - sW);
+        } else {
+          left = Math.min(0, Math.max(cW - sW, left));
+        }
+
+        setBox({
+          left,
+          top,
+          width: sW,
+          height: sH,
+          mask: false,
         });
         return;
       }
@@ -125,6 +167,7 @@ export function FocalBanner({
     subject?.t,
     subject?.r,
     subject?.b,
+    fillFrame,
   ]);
 
   const mask = box?.mask
