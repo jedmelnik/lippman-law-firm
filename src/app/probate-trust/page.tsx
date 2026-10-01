@@ -40,7 +40,7 @@ export default function ProbateTrustPage() {
             alt: "Two people shaking hands across a desk",
             width: 1280,
             height: 720,
-            focalX: 0.5,
+            focalX: 0.58,
             focalY: 0.48,
           }}
           actions={

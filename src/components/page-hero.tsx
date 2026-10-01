@@ -71,7 +71,7 @@ export function PageHero({
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
-          className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%] md:block"
+          className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/85 via-42% to-transparent to-[75%] md:block"
           aria-hidden
         />
         {/* Mobile: darken the top behind the title; leave the lower subject clear */}
