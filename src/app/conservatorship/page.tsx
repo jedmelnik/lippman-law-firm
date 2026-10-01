@@ -21,13 +21,13 @@ export default function ConservatorshipPage() {
           kicker="Conservatorship"
           title="Protect family members"
           lede="Act quickly when capacity declines."
-          // Focal: center of the stacked hands
+          // Focal: center of the overlapping palms (not the sweater cuffs)
           image={{
             src: "/images/hero-hands.jpg",
             alt: "Family hands stacked together in a show of support",
             width: 1280,
             height: 720,
-            focalX: 0.72,
+            focalX: 0.58,
             focalY: 0.5,
           }}
           actions={
