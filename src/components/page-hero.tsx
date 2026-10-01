@@ -79,8 +79,8 @@ export function PageHero({
         <div
           className={`absolute inset-0 hidden bg-gradient-to-r lg:block ${
             image.bleed
-              ? "from-[#132033] from-0% via-[#132033]/90 via-[40%] to-transparent to-[64%]"
-              : "from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%]"
+              ? "from-[#132033] from-0% via-[#132033]/88 via-[28%] to-transparent to-[50%]"
+              : "from-[#132033] from-0% via-[#132033]/90 via-[24%] to-transparent to-[48%]"
           }`}
           aria-hidden
         />
