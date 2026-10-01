@@ -17,8 +17,8 @@ export type HeroImage = {
   /** Wide screens scale `subject` to the banner height so the photo covers more width. */
   fillFrame?: boolean;
   /**
-   * Full-bleed photo on wide screens: darker lockup scrim, no right-edge
-   * fade over the subject.
+   * Full-bleed photo on wide screens: a longer lockup scrim. Ultrawide still
+   * fades the photo's right edge into the brand fill.
    */
   bleed?: boolean;
 };
@@ -73,6 +73,7 @@ export function PageHero({
           focalY={image.focalY}
           subject={image.subject}
           fillFrame={image.fillFrame}
+          edgeColor={HERO_FILL}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
@@ -88,13 +89,6 @@ export function PageHero({
           className="absolute inset-0 bg-[#132033]/55 lg:hidden"
           aria-hidden
         />
-        {/* Ultrawide: dissolve the plane's right edge into section navy */}
-        {image.bleed ? null : (
-          <div
-            className="absolute inset-y-0 right-0 hidden w-36 bg-gradient-to-l from-[#132033] to-transparent min-[1600px]:block"
-            aria-hidden
-          />
-        )}
         {/* Soft top for overlay header */}
         <div
           className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#132033]/45 to-transparent"

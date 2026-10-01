@@ -25,6 +25,8 @@ type Props = {
    * covers more of the frame. Tall (mobile) frames ignore it and pin the focal.
    */
   fillFrame?: boolean;
+  /** Brand fill. On ultrawide, the photo's right edge fades into this color. */
+  edgeColor?: string;
 };
 
 type Box = {
@@ -33,7 +35,13 @@ type Box = {
   width: number;
   height: number;
   mask: boolean;
+  /** Fade the photo's right edge into the brand fill (ultrawide gutter). */
+  fadeRight: boolean;
 };
+
+/** Photo stops at 1600px. At this width and above, blend its right edge into the fill. */
+const ULTRAWIDE_MIN = 1600;
+const RIGHT_FADE = 220;
 
 /**
  * Pins the image landmark in the open half of the banner.
@@ -59,6 +67,7 @@ export function FocalBanner({
   targetY = 0.62,
   subject,
   fillFrame = false,
+  edgeColor = "#132033",
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box | null>(null);
@@ -73,6 +82,7 @@ export function FocalBanner({
       if (cW === 0 || cH === 0) return;
 
       const desktop = cW >= DESKTOP_MIN;
+      const fadeRight = window.innerWidth >= ULTRAWIDE_MIN;
       const wide = cW / cH >= width / height;
       const frameSubject = desktop && wide && fillFrame && subject ? subject : null;
 
@@ -90,6 +100,7 @@ export function FocalBanner({
           width: sW,
           height: sH,
           mask: left > 8,
+          fadeRight,
         });
         return;
       }
@@ -123,6 +134,7 @@ export function FocalBanner({
           width: sW,
           height: sH,
           mask: false,
+          fadeRight,
         });
         return;
       }
@@ -153,13 +165,19 @@ export function FocalBanner({
         width: sW,
         height: sH,
         mask: false,
+        fadeRight,
       });
     };
 
     place();
     const observer = new ResizeObserver(place);
     observer.observe(frame);
-    return () => observer.disconnect();
+    // The plane stops growing at 1600px, so a wider window does not resize it.
+    window.addEventListener("resize", place);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", place);
+    };
   }, [
     width,
     height,
@@ -206,6 +224,19 @@ export function FocalBanner({
               }
         }
       />
+      {box?.fadeRight ? (
+        <div
+          aria-hidden
+          className="absolute"
+          style={{
+            top: box.top,
+            height: box.height,
+            left: Math.max(box.left, box.left + box.width - RIGHT_FADE),
+            width: Math.min(RIGHT_FADE, box.width),
+            background: `linear-gradient(to right, transparent, ${edgeColor})`,
+          }}
+        />
+      ) : null}
     </div>
   );
 }
