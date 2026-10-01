@@ -63,7 +63,7 @@
   --navy: #1e3a5f;
   --brand: #1e3a5f;
   --brand-foreground: #ffffff;
-  --gold: #b8923a;
+  --gold: #f0c14b;
   --card: #f4f7fa;
   --card-foreground: #1a2430;
   --popover: #f4f7fa;
@@ -79,10 +79,10 @@
   --destructive: #b42318;
   --border: #b8c4d0;
   --input: #b8c4d0;
-  --ring: #b8923a;
+  --ring: #f0c14b;
   --radius: 0.5rem;
   --chart-1: #1e3a5f;
-  --chart-2: #b8923a;
+  --chart-2: #f0c14b;
   --chart-3: #3d6a8f;
   --chart-4: #5a6570;
   --chart-5: #8a9aab;
@@ -93,7 +93,7 @@
   --sidebar-accent: #dfe6ee;
   --sidebar-accent-foreground: #1a2430;
   --sidebar-border: #b8c4d0;
-  --sidebar-ring: #b8923a;
+  --sidebar-ring: #f0c14b;
 }
 
 @layer base {
