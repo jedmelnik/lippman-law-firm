@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { practiceAreas } from "@/lib/site";
+import { practiceAreas, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Areas of Practice",
@@ -19,8 +20,8 @@ export default function PracticeAreasPage() {
       <main className="flex flex-1 flex-col">
         <PageHero
           kicker="Practice areas"
-          title="Focused counsel for families"
-          lede="Three core areas of practice - each centered on protecting people, assets, and dignity."
+          title="Counsel for families"
+          lede="Conservatorship, probate, and estate planning."
           // Focal: pen tip on the page
           image={{
             src: "/images/hero-documents.jpg",
@@ -30,6 +31,15 @@ export default function PracticeAreasPage() {
             focalX: 0.58,
             focalY: 0.5,
           }}
+          actions={
+            <Button
+              render={<a href={site.phoneHref} />}
+              size="lg"
+              className="h-11 rounded-md bg-gold px-5 text-sm font-semibold text-ink hover:bg-gold/90 md:h-12 md:px-6"
+            >
+              Call {site.phone}
+            </Button>
+          }
         />
 
         <section className="site-wrap py-14 md:py-20">

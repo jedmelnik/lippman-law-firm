@@ -30,8 +30,8 @@ export default function EstatePlanningPage() {
       <main className="flex flex-1 flex-col">
         <PageHero
           kicker="Estate planning"
-          title="Helping you plan for the future"
-          lede="Wills, trusts, and capacity documents that protect your family - with a free initial estate planning consultation."
+          title="Plan for the future"
+          lede="Wills, trusts, and a free first consultation."
           // Focal: pen tip on the page
           image={{
             src: "/images/hero-documents.jpg",

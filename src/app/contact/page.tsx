@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
+import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -19,7 +20,7 @@ export default function ContactPage() {
         <PageHero
           kicker="Contact"
           title="Schedule a consultation"
-          lede="Call or write from downtown San Rafael. Free initial estate planning consultations available."
+          lede="Call or write from downtown San Rafael."
           // Focal: center of the clasped hands
           image={{
             src: "/images/hero-handshake.jpg",
@@ -29,6 +30,15 @@ export default function ContactPage() {
             focalX: 0.5,
             focalY: 0.48,
           }}
+          actions={
+            <Button
+              render={<a href={site.phoneHref} />}
+              size="lg"
+              className="h-11 rounded-md bg-gold px-5 text-sm font-semibold text-ink hover:bg-gold/90 md:h-12 md:px-6"
+            >
+              Call {site.phone}
+            </Button>
+          }
         />
 
         <section className="site-wrap py-14 md:py-20">

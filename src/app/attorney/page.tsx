@@ -21,7 +21,7 @@ export default function AttorneyPage() {
         <PageHero
           kicker="Attorney profile"
           title={attorneyProfile.name}
-          lede="Conservatorship, estate planning, and probate counsel for Marin County and San Francisco families."
+          lede="Estate, probate, and conservatorship counsel."
           // Focal: eyes. Focus frame matches the marked photo region
           // (orange wall, figure, building) so that crop fills the banner.
           image={{

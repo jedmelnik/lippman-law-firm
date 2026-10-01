@@ -19,8 +19,8 @@ export default function ConservatorshipPage() {
       <main className="flex flex-1 flex-col">
         <PageHero
           kicker="Conservatorship"
-          title="Helping you protect vulnerable family members"
-          lede="When capacity declines, we help you act quickly and carefully - including alternatives to conservatorship when they fit."
+          title="Protect family members"
+          lede="Act quickly when capacity declines."
           // Focal: center of the stacked hands
           image={{
             src: "/images/hero-hands.jpg",

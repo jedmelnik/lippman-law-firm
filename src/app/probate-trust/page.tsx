@@ -32,8 +32,8 @@ export default function ProbateTrustPage() {
       <main className="flex flex-1 flex-col">
         <PageHero
           kicker="Probate & trust"
-          title="Guiding you through probate and trust administration"
-          lede="Compassionate, meticulous counsel for executors and beneficiaries during a difficult time."
+          title="Probate and trust help"
+          lede="Counsel for executors and beneficiaries."
           // Focal: center of the clasped hands
           image={{
             src: "/images/hero-handshake.jpg",

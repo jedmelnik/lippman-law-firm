@@ -96,7 +96,7 @@ export function PageHero({
         className={`site-wrap relative flex items-end ${
           home
             ? "min-h-[clamp(14rem,24vw,26rem)] pb-9 pt-24 md:pb-12 md:pt-28"
-            : "min-h-0 pb-8 pt-24 md:pb-10 md:pt-28 lg:pb-12"
+            : "min-h-0 pb-7 pt-24 md:pb-8 md:pt-24"
         }`}
       >
         <div
@@ -110,21 +110,21 @@ export function PageHero({
             </p>
           ) : null}
           <h1
-            className={`mt-2 font-display tracking-tight text-balance text-white ${
+            className={`mt-2 font-display tracking-tight text-white ${
               home
-                ? "text-[clamp(2.35rem,6.5vw,4.25rem)] leading-[1.05]"
-                : "text-[clamp(2rem,5.5vw,3.5rem)] leading-[1.08]"
+                ? "text-balance text-[clamp(2.35rem,6.5vw,4.25rem)] leading-[1.05]"
+                : "text-[clamp(1.85rem,4.2vw,2.75rem)] leading-[1.12]"
             }`}
           >
             {title}
           </h1>
-          <div className="mt-3 h-[3px] w-20 bg-gold md:w-24" />
+          <div className={`h-[3px] w-20 bg-gold md:w-24 ${home ? "mt-3" : "mt-2.5"}`} />
           {lede ? (
             <p
-              className={`mt-4 max-w-md text-pretty text-white/80 ${
+              className={`text-white/80 ${
                 home
-                  ? "text-base leading-relaxed md:text-lg"
-                  : "text-[1.05rem] leading-relaxed"
+                  ? "mt-4 max-w-md text-pretty text-base leading-relaxed md:text-lg"
+                  : "mt-3 max-w-lg text-[1.02rem] leading-snug"
               } ${ledeOnMobile ? "block" : "hidden md:block"}`}
             >
               {lede}
@@ -133,7 +133,9 @@ export function PageHero({
           {/* Visually hidden alt for decorative hero image when title is present */}
           <span className="sr-only">{image.alt}</span>
           {actions ? (
-            <div className="mt-6 flex flex-wrap items-center gap-3">{actions}</div>
+            <div className={`flex flex-wrap items-center gap-3 ${home ? "mt-6" : "mt-4"}`}>
+              {actions}
+            </div>
           ) : null}
         </div>
       </div>
