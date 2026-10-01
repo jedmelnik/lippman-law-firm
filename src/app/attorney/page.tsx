@@ -22,17 +22,18 @@ export default function AttorneyPage() {
           kicker="Attorney profile"
           title={attorneyProfile.name}
           lede="Estate, probate, and conservatorship counsel."
-          // Focal: eyes. Focus frame matches the marked photo region
-          // (orange wall, figure, building) so that crop fills the banner.
+          // Focal: eyes. fillFrame subject hugs the figure + building so
+          // the short banner is not a narrow strip with a wide navy dead zone.
           image={{
             src: "/images/hero-consult.jpg",
             alt: "Professional advisor in a consultation setting",
             width: 1280,
             height: 720,
-            focalX: 0.62,
+            focalX: 0.6,
             focalY: 0.22,
             fillFrame: true,
-            subject: { l: 0.1, t: 0, r: 0.98, b: 0.63 },
+            bleed: true,
+            subject: { l: 0.32, t: 0, r: 0.99, b: 0.48 },
           }}
           actions={
             <Button
