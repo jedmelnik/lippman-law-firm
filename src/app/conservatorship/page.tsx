@@ -27,8 +27,8 @@ export default function ConservatorshipPage() {
             alt: "Family hands stacked together in a show of support",
             width: 1280,
             height: 720,
-            focalX: 0.66,
-            focalY: 0.52,
+            focalX: 0.72,
+            focalY: 0.5,
           }}
           actions={
             <Button
