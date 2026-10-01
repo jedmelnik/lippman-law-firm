@@ -32,11 +32,14 @@ export default function EstatePlanningPage() {
           kicker="Estate planning"
           title="Helping you plan for the future"
           lede="Wills, trusts, and capacity documents that protect your family - with a free initial estate planning consultation."
-          // Focal: pen and signing hand on the right
+          // Focal: pen tip on the page
           image={{
             src: "/images/hero-documents.jpg",
             alt: "Hands signing estate planning documents with a pen",
-            focal: "78% 45%",
+            width: 1280,
+            height: 720,
+            focalX: 0.58,
+            focalY: 0.5,
           }}
           actions={
             <Button

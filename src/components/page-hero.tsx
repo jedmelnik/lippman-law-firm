@@ -1,11 +1,14 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
+import { FocalBanner } from "@/components/focal-banner";
 
 export type HeroImage = {
   src: string;
   alt: string;
-  /** CSS object-position - subject landmark in the open half opposite the lockup. */
-  focal: string;
+  width: number;
+  height: number;
+  /** Landmark in the source file (0-1). The banner pins this point. */
+  focalX: number;
+  focalY: number;
 };
 
 type Props = {
@@ -50,18 +53,16 @@ export function PageHero({
         aria-hidden
         className="pointer-events-none absolute inset-y-0 left-1/2 w-full max-w-[1600px] -translate-x-1/2 overflow-hidden"
       >
-        <Image
+        <FocalBanner
           src={image.src}
-          alt=""
-          fill
-          priority
-          sizes="(min-width: 1600px) 1600px, 100vw"
-          className="object-cover"
-          style={{ objectPosition: image.focal }}
+          width={image.width}
+          height={image.height}
+          focalX={image.focalX}
+          focalY={image.focalY}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
-          className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/90 via-30% to-transparent to-[68%] md:block"
+          className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%] md:block"
           aria-hidden
         />
         {/* Mobile: side scrub + light bottom for contrast */}

@@ -21,11 +21,14 @@ export default function PracticeAreasPage() {
           kicker="Practice areas"
           title="Focused counsel for families"
           lede="Three core areas of practice - each centered on protecting people, assets, and dignity."
-          // Focal: pen tip / signing hands on the right
+          // Focal: pen tip on the page
           image={{
             src: "/images/hero-documents.jpg",
             alt: "Hands signing legal documents at a desk",
-            focal: "75% 40%",
+            width: 1280,
+            height: 720,
+            focalX: 0.58,
+            focalY: 0.5,
           }}
         />
 

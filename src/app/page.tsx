@@ -23,11 +23,14 @@ export default function HomePage() {
           }
           lede="Protecting older adults and their families through conservatorship, probate, trust administration, and estate planning."
           ledeOnMobile
-          // Focal: family group / sunset center-right, clear of left lockup
+          // Focal: setting sun behind the family
           image={{
             src: "/images/hero-family.jpg",
             alt: "Multi-generational family standing together on a beach at sunset",
-            focal: "72% 45%",
+            width: 1280,
+            height: 720,
+            focalX: 0.65,
+            focalY: 0.7,
           }}
           actions={
             <>
@@ -42,7 +45,7 @@ export default function HomePage() {
                 render={<Link href="/contact" />}
                 variant="outline"
                 size="lg"
-                className="h-11 rounded-md border-white/40 bg-transparent px-5 text-sm font-semibold text-white hover:bg-white/10 hover:text-white md:h-12 md:px-6 md:text-base"
+                className="hidden h-11 rounded-md border-white/40 bg-transparent px-5 text-sm font-semibold text-white hover:bg-white/10 hover:text-white lg:inline-flex md:h-12 md:px-6 md:text-base"
               >
                 Free consultation
               </Button>
@@ -102,7 +105,7 @@ export default function HomePage() {
                     fill
                     sizes="100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    style={{ objectPosition: "50% 40%" }}
+                    style={{ objectPosition: "58% 50%" }}
                   />
                   <div
                     className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"

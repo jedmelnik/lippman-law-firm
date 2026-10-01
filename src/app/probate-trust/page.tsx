@@ -34,11 +34,14 @@ export default function ProbateTrustPage() {
           kicker="Probate & trust"
           title="Guiding you through probate and trust administration"
           lede="Compassionate, meticulous counsel for executors and beneficiaries during a difficult time."
-          // Focal: handshake / agreement on the right
+          // Focal: center of the clasped hands
           image={{
             src: "/images/hero-handshake.jpg",
             alt: "Two people shaking hands across a desk",
-            focal: "72% 40%",
+            width: 1280,
+            height: 720,
+            focalX: 0.5,
+            focalY: 0.48,
           }}
           actions={
             <Button

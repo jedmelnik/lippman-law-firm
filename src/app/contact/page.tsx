@@ -20,11 +20,14 @@ export default function ContactPage() {
           kicker="Contact"
           title="Schedule a consultation"
           lede="Call or write from downtown San Rafael. Free initial estate planning consultations available."
-          // Focal: handshake agreement on the open right
+          // Focal: center of the clasped hands
           image={{
             src: "/images/hero-handshake.jpg",
             alt: "Handshake across a desk during a consultation",
-            focal: "70% 35%",
+            width: 1280,
+            height: 720,
+            focalX: 0.5,
+            focalY: 0.48,
           }}
         />
 
