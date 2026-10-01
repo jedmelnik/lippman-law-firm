@@ -22,11 +22,9 @@ type Props = {
   subject?: Subject;
   /**
    * Wide banners scale this subject box to the banner height so the photo
-   * covers more of the frame. Home uses subject only on tall (mobile) frames.
+   * covers more of the frame. Tall (mobile) frames ignore it and pin the focal.
    */
   fillFrame?: boolean;
-  /** On tall frames, sit the subject in the lower open area under the title. */
-  seatLow?: boolean;
 };
 
 type Box = {
@@ -46,8 +44,7 @@ type Box = {
  * Wide banners contain the whole photo and slide it right.
  * Wide banners with fillFrame scale the subject box to the banner height
  * so that region covers more of the frame.
- * Tall banners (mobile) scale to the subject box so the group fills the
- * frame instead of sitting in a short letterboxed strip.
+ * Tall banners (mobile) cover the frame and pin the landmark to the center.
  */
 export function FocalBanner({
   src,
@@ -59,7 +56,6 @@ export function FocalBanner({
   targetY = 0.62,
   subject,
   fillFrame = false,
-  seatLow = false,
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState<Box | null>(null);
@@ -127,30 +123,24 @@ export function FocalBanner({
         return;
       }
 
-      // Cover the hero so the photo is not a short letterboxed strip.
-      // Pan so the subject stays in frame; side crop only if the group
-      // is wider than the phone.
-      const region = {
-        l: subject?.l ?? Math.max(0, focalX - 0.2),
-        t: subject?.t ?? Math.max(0, focalY - 0.25),
-        r: subject?.r ?? Math.min(1, focalX + 0.2),
-        b: subject?.b ?? Math.min(1, focalY + 0.25),
-      };
+      // Phones: cover the banner and put the landmark at the center.
+      // Cover alone is often only a few pixels wider than the frame, so an
+      // off-center landmark cannot reach the middle. Zoom until there is
+      // enough photo on every side of the landmark, then clamp.
       const cover = Math.max(cW / width, cH / height);
-      // Phones: zoom so the top of the subject starts under the title.
-      const seated = seatLow
-        ? Math.max(cover, (cH * 0.58) / Math.max(0.15, region.t) / height)
-        : cover;
-      const scale = seated;
+      const room = (fraction: number) => Math.max(fraction, 0.12);
+      const scale = Math.max(
+        cover,
+        cW / 2 / (room(focalX) * width),
+        cW / 2 / (room(1 - focalX) * width),
+        cH / 2 / (room(focalY) * height),
+        cH / 2 / (room(1 - focalY) * height),
+      );
       const sW = width * scale;
       const sH = height * scale;
-
-      let left = cW / 2 - ((region.l + region.r) / 2) * sW;
+      let left = cW * 0.5 - focalX * sW;
+      let top = cH * 0.5 - focalY * sH;
       left = Math.min(0, Math.max(cW - sW, left));
-
-      let top = seatLow
-        ? cH * 0.58 - region.t * sH
-        : cH / 2 - ((region.t + region.b) / 2) * sH;
       top = Math.min(0, Math.max(cH - sH, top));
 
       setBox({
@@ -178,7 +168,6 @@ export function FocalBanner({
     subject?.r,
     subject?.b,
     fillFrame,
-    seatLow,
   ]);
 
   const mask = box?.mask

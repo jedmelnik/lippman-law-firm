@@ -10,15 +10,15 @@ export type HeroImage = {
   focalX: number;
   focalY: number;
   /**
-   * Region that must stay fully visible (0-1). On tall screens the photo
-   * scales around this box instead of letterboxing the whole frame.
+   * Region that must stay fully visible on wide screens when `fillFrame` is set.
+   * Phones ignore this box and center `focalX` / `focalY` instead.
    */
   subject?: { l: number; t: number; r: number; b: number };
   /** Wide screens scale `subject` to the banner height so the photo covers more width. */
   fillFrame?: boolean;
   /**
-   * Full-bleed photo for this banner only: darker lockup scrim, no right-edge
-   * fade over the subject, and on phones the subject sits below the title.
+   * Full-bleed photo on wide screens: darker lockup scrim, no right-edge
+   * fade over the subject.
    */
   bleed?: boolean;
 };
@@ -73,7 +73,6 @@ export function PageHero({
           focalY={image.focalY}
           subject={image.subject}
           fillFrame={image.fillFrame}
-          seatLow={image.bleed}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
@@ -84,9 +83,9 @@ export function PageHero({
           }`}
           aria-hidden
         />
-        {/* Mobile: darken the top behind the title; leave the lower subject clear */}
+        {/* Mobile: dim the whole photo so the lockup reads, image still visible */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#132033] from-0% via-[#132033]/80 via-[42%] to-transparent to-[68%] md:hidden"
+          className="absolute inset-0 bg-[#132033]/55 md:hidden"
           aria-hidden
         />
         {/* Ultrawide: dissolve the plane's right edge into section navy */}
