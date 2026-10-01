@@ -31,6 +31,8 @@ export default function HomePage() {
             height: 720,
             focalX: 0.65,
             focalY: 0.7,
+            // Heads through feet, including the child at the right edge
+            subject: { l: 0.3, t: 0.46, r: 0.99, b: 0.96 },
           }}
           actions={
             <>

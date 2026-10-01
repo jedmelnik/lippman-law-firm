@@ -9,6 +9,11 @@ export type HeroImage = {
   /** Landmark in the source file (0-1). The banner pins this point. */
   focalX: number;
   focalY: number;
+  /**
+   * Region that must stay fully visible (0-1). On tall screens the photo
+   * scales around this box instead of letterboxing the whole frame.
+   */
+  subject?: { l: number; t: number; r: number; b: number };
 };
 
 type Props = {
@@ -59,19 +64,16 @@ export function PageHero({
           height={image.height}
           focalX={image.focalX}
           focalY={image.focalY}
+          subject={image.subject}
         />
         {/* Left-justified lockup → gradient from the left (desktop+) */}
         <div
           className="absolute inset-0 hidden bg-gradient-to-r from-[#132033] from-0% via-[#132033]/92 via-36% to-transparent to-[62%] md:block"
           aria-hidden
         />
-        {/* Mobile: side scrub + light bottom for contrast */}
+        {/* Mobile: darken the top behind the title; leave the lower subject clear */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-[#132033] from-0% via-[#132033]/88 via-40% to-transparent to-[75%] md:hidden"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#132033]/75 to-transparent md:hidden"
+          className="absolute inset-0 bg-gradient-to-b from-[#132033] from-0% via-[#132033]/80 via-[42%] to-transparent to-[68%] md:hidden"
           aria-hidden
         />
         {/* Ultrawide: dissolve the plane's right edge into section navy */}

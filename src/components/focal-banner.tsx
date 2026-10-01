@@ -2,6 +2,8 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 
+type Subject = { l: number; t: number; r: number; b: number };
+
 type Props = {
   src: string;
   width: number;
@@ -16,34 +18,40 @@ type Props = {
    */
   targetX?: number;
   targetY?: number;
+  /** Region that must stay fully on screen. Tall frames scale to this box. */
+  subject?: Subject;
+};
+
+type Box = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  mask: boolean;
 };
 
 /**
- * Pins the image landmark to the open half of the banner and never crops
- * the file. object-position cannot do this: a single percentage is both
- * the image point and the container point, so a landmark that is not
- * already at ~78% gets scaled from the wrong spot and clipped.
+ * Pins the image landmark in the open half of the banner.
+ * object-position cannot do this: one percentage is both the image point
+ * and the container point, so a landmark that is not already at ~78%
+ * gets scaled from the wrong spot and clipped.
+ *
+ * Wide banners contain the whole photo and slide it right.
+ * Tall banners (mobile) scale to the subject box so the group fills the
+ * frame instead of sitting in a short letterboxed strip.
  */
 export function FocalBanner({
   src,
   width,
   height,
   focalX,
-  focalY: _focalY,
+  focalY,
   targetX = 0.78,
-  targetY: _targetY = 0.55,
+  targetY = 0.62,
+  subject,
 }: Props) {
-  // focalY / targetY document the landmark. Horizontal pin does the placement;
-  // vertical slack is bottom-aligned so the title stays clear of the subject.
-  void _focalY;
-  void _targetY;
   const frameRef = useRef<HTMLDivElement>(null);
-  const [box, setBox] = useState<{
-    left: number;
-    top: number;
-    width: number;
-    height: number;
-  } | null>(null);
+  const [box, setBox] = useState<Box | null>(null);
 
   useLayoutEffect(() => {
     const frame = frameRef.current;
@@ -54,33 +62,77 @@ export function FocalBanner({
       const cH = frame.clientHeight;
       if (cW === 0 || cH === 0) return;
 
-      // Contain the whole photograph so heads, hands, and feet stay intact.
-      const scale = Math.min(cW / width, cH / height);
+      const wide = cW / cH >= width / height;
+
+      if (wide) {
+        const scale = Math.min(cW / width, cH / height);
+        const sW = width * scale;
+        const sH = height * scale;
+        let left = targetX * cW - focalX * sW;
+        const minLeft = Math.min(0, cW - sW);
+        const maxLeft = Math.max(0, cW - sW);
+        left = Math.min(maxLeft, Math.max(minLeft, left));
+        setBox({
+          left,
+          top: sH < cH - 1 ? cH - sH : 0,
+          width: sW,
+          height: sH,
+          mask: left > 8,
+        });
+        return;
+      }
+
+      // Cover the hero so the photo is not a short letterboxed strip.
+      // Pan so the subject stays in frame; side crop only if the group
+      // is wider than the phone.
+      const region = {
+        l: subject?.l ?? Math.max(0, focalX - 0.2),
+        t: subject?.t ?? Math.max(0, focalY - 0.25),
+        r: subject?.r ?? Math.min(1, focalX + 0.2),
+        b: subject?.b ?? Math.min(1, focalY + 0.25),
+      };
+      const scale = Math.max(cW / width, cH / height);
       const sW = width * scale;
       const sH = height * scale;
 
-      let left = targetX * cW - focalX * sW;
-      const minLeft = Math.min(0, cW - sW);
-      const maxLeft = Math.max(0, cW - sW);
-      left = Math.min(maxLeft, Math.max(minLeft, left));
+      let left = cW / 2 - ((region.l + region.r) / 2) * sW;
+      left = Math.min(0, Math.max(cW - sW, left));
 
-      // Wide banners already fill the height (top is 0).
-      // Taller banners: pin the photo to the bottom so the title sits on navy
-      // and the landmark stays below the lockup.
-      const top = sH < cH - 1 ? cH - sH : 0;
+      let top = cH / 2 - ((region.t + region.b) / 2) * sH;
+      top = Math.min(0, Math.max(cH - sH, top));
 
-      setBox({ left, top, width: sW, height: sH });
+      setBox({
+        left,
+        top,
+        width: sW,
+        height: sH,
+        mask: false,
+      });
     };
 
     place();
     const observer = new ResizeObserver(place);
     observer.observe(frame);
     return () => observer.disconnect();
-  }, [width, height, focalX, targetX]);
+  }, [
+    width,
+    height,
+    focalX,
+    focalY,
+    targetX,
+    targetY,
+    subject?.l,
+    subject?.t,
+    subject?.r,
+    subject?.b,
+  ]);
+
+  const mask = box?.mask
+    ? "linear-gradient(to right, transparent, #000 16%)"
+    : undefined;
 
   return (
     <div ref={frameRef} className="absolute inset-0 overflow-hidden">
-      {/* SSR / first paint: right-weighted, full height, no vertical crop */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
@@ -96,19 +148,14 @@ export function FocalBanner({
                 top: box.top,
                 width: box.width,
                 height: box.height,
-                // Dissolve the photo's left edge into the navy field under the type
-                WebkitMaskImage:
-                  "linear-gradient(to right, transparent, #000 16%)",
-                maskImage: "linear-gradient(to right, transparent, #000 16%)",
+                WebkitMaskImage: mask,
+                maskImage: mask,
               }
             : {
                 height: "100%",
                 width: "auto",
                 right: 0,
                 top: 0,
-                WebkitMaskImage:
-                  "linear-gradient(to right, transparent, #000 16%)",
-                maskImage: "linear-gradient(to right, transparent, #000 16%)",
               }
         }
       />
